@@ -55,25 +55,28 @@ public class CodexContentCreator : MonoBehaviour
                     foreach(string topicName in instantiatedTopicNames)
                     {
                         if (entry.codexTopic == topicName)
-                            return;
+                        {
+                            break ;
+                        }
                         else
                         {
-                            if(entry.codexTopic != "")
+                            if (entry.codexTopic != "")
                             {
                                 CodexButton button = Instantiate(topicPrefab, topicParent);
                                 button.parent = this;
                                 button.buttonText.text = entry.codexTopic;
                                 instantiatedTopics.Add(button);
                                 instantiatedTopicNames.Add(entry.codexTopic);
-                                break;
-                            }                                                  
+                                instantiatedTopics[0].TopicButton();
+                                return;
+                            }
                         }
                     }
                 }
  
             }
         }
-        instantiatedTopics[0].TopicButton();
+
     }
     public void CreateEntryButtons(string topicName)
     {
